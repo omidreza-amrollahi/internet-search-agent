@@ -1,0 +1,33 @@
+{
+	// .vscode/launch.json
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Python Debugger: FastAPI",
+			"type": "debugpy",
+			"request": "launch",
+			"module": "uvicorn",
+			"args": ["src.main:app", "--reload"],
+            "env": {
+				"PYTHONPATH": "${workspaceFolder}"
+			},
+			"jinja": true,
+            "justMyCode": false
+		},
+		{
+			"name": "Run Internet-Search Agent",
+			"type": "debugpy",
+			"request": "launch",
+			"program": "${workspaceFolder}/internet_search_agent.py",
+			"envFile": "${workspaceFolder}/.env", // pull in keys
+			"console": "integratedTerminal",
+			"justMyCode": false // step into libs if needed
+		},
+		{
+			"name": "Attach to LangGraph",
+			"type": "debugpy",
+			"request": "attach",
+			"connect": { "host": "0.0.0.0", "port": 5678 }
+		}
+	]
+}
